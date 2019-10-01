@@ -1,7 +1,7 @@
 <script>
 /* global Blotter */
 export default {
-  name: 'VueBlotter',
+  name: "VueBlotter",
   props: {
     // Controls
     autoplay: {
@@ -11,23 +11,23 @@ export default {
     // Text
     text: {
       type: String,
-			default: 'Blotter'
-    }, 
+      default: "Blotter"
+    },
     family: {
       type: String,
-      default: 'serif'
+      default: "serif"
     },
     size: {
       type: Number,
       default: 120
-    }, 
+    },
     fill: {
       type: String,
       default: "#171717"
     },
     textStyle: {
       type: String,
-      default: 'normal'
+      default: "normal"
     },
     weight: {
       type: Number,
@@ -56,11 +56,11 @@ export default {
     // Material
     materialType: {
       type: String,
-			default: 'LiquidDistortMaterial'
+      default: "LiquidDistortMaterial"
     },
     uniforms: {
-			type: Object,
-			default: () => {}
+      type: Object,
+      default: () => {}
     }
   },
   data: () => ({
@@ -70,20 +70,20 @@ export default {
   }),
   mounted() {
     // Instantiate global instance of Blotter class
-    this.initBlotter()
-    this.checkIntersection()
+    this.initBlotter();
+    this.checkIntersection();
   },
   beforeDestroy() {
     // Stop updating the blotter instance if component is destroyed
-    this.blotter.stop()
+    this.blotter.stop();
   },
   watch: {
     intersecting(value) {
       if (value) {
-				this.scope.play() 
-			} else {
-				this.scope.pause()
-			}
+        this.scope.play();
+      } else {
+        this.scope.pause();
+      }
     }
   },
   methods: {
@@ -95,77 +95,80 @@ export default {
         size: this.size,
         fill: this.fill,
         textStyle: this.textStyle,
-        weight: this.weight, 
-        padding: this.padding, 
-        paddingTop: this.paddingTop, 
-        paddingRight: this.paddingRight, 
-        paddingBottom: this.paddingBottom, 
+        weight: this.weight,
+        padding: this.padding,
+        paddingTop: this.paddingTop,
+        paddingRight: this.paddingRight,
+        paddingBottom: this.paddingBottom,
         paddingLeft: this.paddingLeft
-      })
-    
+      });
+
       // Set material according to props
-      const material = this.setBlotterMaterial(this.materialType)
+      const material = this.setBlotterMaterial(this.materialType);
 
       // Check if uniforms object exist and contains properties
       if (this.uniforms && Object.keys(this.uniforms).length !== 0) {
-        this.setBlotterUniforms(material, this.uniforms)
+        this.setBlotterUniforms(material, this.uniforms);
       }
 
       // Init blotter and insert into root DOM node as canvas element
-      this.blotter = this.renderBlotter(material, text)
+      this.blotter = this.renderBlotter(material, text);
 
-      this.setBlotterScope(this.blotter, text, this.$el)
+      this.setBlotterScope(this.blotter, text, this.$el);
     },
     setBlotterText({ text, textStyle, ...args }) {
       return new Blotter.Text(text, {
         style: textStyle,
         ...args
-      })
+      });
     },
     setBlotterMaterial(type) {
-      return new Blotter[type]()
+      return new Blotter[type]();
     },
     setBlotterUniforms(material, uniforms) {
       for (const key in uniforms) {
-        material.uniforms[key].value = uniforms[key]
+        material.uniforms[key].value = uniforms[key];
       }
     },
     renderBlotter(material, text) {
       return new Blotter(material, {
         autoplay: this.autoplay,
-        texts: text 
-      })
+        texts: text
+      });
     },
     setBlotterScope(blotter, text, el) {
-       this.scope = blotter.forText(text);
-       // Append to slot element
-       this.scope.appendTo(el);
+      this.scope = blotter.forText(text);
+      // Append to slot element
+      this.scope.appendTo(el);
     },
     pause(scope) {
-      scope.pause()
+      scope.pause();
     },
     play(scope) {
-      scope.play()
+      scope.play();
     },
     checkIntersection() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.intersecting = true
-          } else {
-            this.intersecting = false
-          }
-        })
-      }, { threshold: 0.3 })
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              this.intersecting = true;
+            } else {
+              this.intersecting = false;
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
 
-      observer.observe(this.$el)
+      observer.observe(this.$el);
     }
   },
   render() {
     return this.$scopedSlots.default({
       blotterScope: this.scope,
       intersecting: this.intersecting
-    })
+    });
   }
-}
+};
 </script>
