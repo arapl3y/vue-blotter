@@ -1,7 +1,7 @@
 ![Banner Image](https://user-images.githubusercontent.com/14939268/65938291-ed905600-e465-11e9-8a5c-a8a28f5a1181.png)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Easily use [Blotter's](https://github.com/bradley/Blotter) unconventional text effects in your Vue project
+Easily create unconventional text effects with [Blotter.js](https://github.com/bradley/Blotter) in your Vue project
 
 ## Features
 - Declarative API for creating Blotter text effects
@@ -9,14 +9,15 @@ Easily use [Blotter's](https://github.com/bradley/Blotter) unconventional text e
 - Combine with Vue's event API to manipulate effects
 
 ## Getting started
-Blotter.js is not currently available on npm, so you will need to add CDN links to the library and materials you need. (I'm currently looking into how we can get Blotter and the material files up on npm to make this process more seamless)
+Unfortunately, Blotter.js is not currently available on npm, so you will need to import the library and materials you need through CDN. (I'm currently looking at getting Blotter.js up on npm to make this process simpler)
 
-For Vue you will need to add the main blotter.js library link and any additional blotter material links to your `index.html` file:
-Library:
+For standard Vue you will need to add the main Blotter.js library and any additional materials to your `index.html` file:
+
+Blotter library:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js"></script>
 ```
-Materials (At least one):
+Blotter materials (grab at least one):
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/channelSplitMaterial.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/fliesMaterial.min.js"></script>
@@ -47,7 +48,9 @@ module.exports = {
 ## Usage
 Once you've imported the scripts you can access the component by installing it:
 
-`npm install vue-blotter`
+```bash
+npm install vue-blotter
+```
 
 and then importing it:
 
