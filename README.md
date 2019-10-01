@@ -1,4 +1,4 @@
-# vue-blotter
+![Banner Image](https://user-images.githubusercontent.com/14939268/65938291-ed905600-e465-11e9-8a5c-a8a28f5a1181.png)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Easily use [Blotter's](https://github.com/bradley/Blotter) unconventional text effects in your Vue project
@@ -51,7 +51,7 @@ Once you've imported the scripts you can access the component by installing it:
 
 and then importing it:
 
-```js
+```vue
 <template>
     <vue-blotter
         family="Garamond"
@@ -82,7 +82,7 @@ export default {
 ```
 
 ## Interaction example
-```js
+```vue
 <template>
     <vue-blotter
         family="Inconsolata"
