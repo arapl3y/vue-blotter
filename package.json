@@ -8,7 +8,7 @@
   "repository": "https://github.com/arapl3y/vue-blotter",
   "bugs": "https://github.com/arapl3y/vue-blotter/issues",
   "license": "MIT",
-  "description": "A Blotter.js GLSL text component",
+  "description": "A Blotter.js Vue component",
   "keywords": [
     "vue",
     "blotter",
