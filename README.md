@@ -142,9 +142,6 @@ I've exposed the following configuration options, if you think I've missed anyth
 | `paddingBottom` | Number | 0 | The bottom padding of the text |
 | `paddingLeft` | Number | 0 | The left padding of the text |
 
-## Contributing
-Please read [CONTRIBUTING.md](https://github.com/arapl3y/vue-blotter/CONTRIBUTING.md) for details on code of conduct, and the process for submitting pull requests.
-
 ## Acknowledgments
 - [Bradley Griffith](http://bradley.computer/) for making the awesome Blotter.js library
 - [Adam Watham](https://adamwathan.me/) for his excellent course on [Advanced Vue Component Design](https://adamwathan.me/advanced-vue-component-design/)
