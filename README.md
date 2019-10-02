@@ -52,25 +52,51 @@ Once you've imported the scripts you can access the component by installing it:
 npm install vue-blotter
 ```
 
-and then importing it:
+and then importing it into your component.
 
+### Basic example
+[![Edit vue-blotter example #3](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-blotter-example-2-9x2id?fontsize=14)
+
+A material type must be set as a bare minimum for the component to render.
 ```vue
 <template>
-    <vue-blotter
-        family="Garamond"
-        fill="#FFAAEE"
-        textStyle="italic"
-        :size="120"
-        materialType="RollingDistortMaterial"
-        text="Blotter"
-        :uniforms="{
-            uSineDistortSpread: 0.25,
-            uSineDistortAmplitude: 0.8
-        }"
-    >
-        <!-- Element to append canvas to -->
-        <h1 slot-scope="{ blotterScope }"></h1>
-    </vue-blotter>
+  <vue-blotter 
+    material-type="LiquidDistortMaterial"
+  >
+    <h1></h1>
+  </vue-blotter>
+</template>
+
+<script>
+import VueBlotter from "vue-blotter";
+
+export default {
+  components: {
+    VueBlotter
+  }
+};
+</script>
+```
+
+### Additional options example
+[![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-08wpo?fontsize=14)
+```vue
+<template>
+  <vue-blotter
+    family="Garamond"
+    fill="#FFAAEE"
+    text-style="italic"
+    :size="120"
+    material-type="RollingDistortMaterial"
+    text="Blotter"
+    :uniforms="{
+      uSineDistortSpread: 0.25,
+      uSineDistortAmplitude: 0.8
+    }"
+>
+  <!-- Element to append canvas to -->
+  <h1 slot-scope="{ blotterScope }"></h1>
+</vue-blotter>
 </template>
 
 <script>
@@ -84,21 +110,23 @@ export default {
 </script>
 ```
 
-## Interaction example
+
+### Interaction example
+[![Edit vue-blotter example #2](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-blotter-example-1-nmrnn?fontsize=14)
 ```vue
 <template>
     <vue-blotter
-        family="Inconsolata"
-        fill="#171717"
-        textStyle="normal"
-        :size="180"
-        materialType="LiquidDistortMaterial"
-        text="Blotter"
-        :uniforms="{
-            uSpeed: 0.25
-        }"
+      family="Inconsolata"
+      fill="#171717"
+      text-style="normal"
+      :size="180"
+      material-type="LiquidDistortMaterial"
+      text="Blotter"
+      :uniforms="{
+        uSpeed: 0.25
+      }"
     >
-        <h1 slot-scope="{ blotterScope }" @mousemove="(e) => mouseMove(e, blotterScope)"></h1>
+      <h1 slot-scope="{ blotterScope }" @mousemove="(e) => mouseMove(e, blotterScope)"></h1>
     </vue-blotter>
 </template>
 
@@ -120,14 +148,13 @@ export default {
 
 ## Configuration options
 
-Detailed information about materials and their respective uniforms can be found at https://blotter.js.org/#/materials
-
+Detailed information about materials and their respective uniforms can be found at https://blotter.js.org/#/materials.
 I've exposed the following configuration options, if you think I've missed anything major please feel free to create an issue.
 
 | Key | Type | Default | Description |
 |--|--|--|--|
+| `materialType` (required) | String | undefined | The type of Blotter material to be used. |
 | `text` | String | 'Blotter' | The text to be rendered |
-| `materialType` | String | 'LiquidDistortMaterial' | The type of Blotter material to be used |
 | `uniforms` | Object | {} | The uniforms to be applied to the material |
 | `autoplay` | Boolean | true | Whether or not to immediately begin the render loop |
 | `checkInViewport` | Boolean | true | Whether to pause the animation when outisde the viewport |
