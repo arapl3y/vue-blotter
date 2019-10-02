@@ -8,6 +8,10 @@ export default {
       type: Boolean,
       default: true
     },
+    checkInViewport: {
+      type: Boolean,
+      default: true
+    },
     // Text
     text: {
       type: String,
@@ -56,7 +60,7 @@ export default {
     // Material
     materialType: {
       type: String,
-      default: "LiquidDistortMaterial"
+      required: true,
     },
     uniforms: {
       type: Object,
@@ -71,7 +75,10 @@ export default {
   mounted() {
     // Instantiate global instance of Blotter class
     this.initBlotter();
-    this.checkIntersection();
+    
+    if (this.checkInViewport) {
+      this.checkIntersection();
+    }
   },
   beforeDestroy() {
     // Stop updating the blotter instance if component is destroyed
@@ -88,6 +95,10 @@ export default {
   },
   methods: {
     initBlotter() {
+      if (!this.materialType) {
+        throw new Error('Material type prop is required. Refer to https://github.com/arapl3y/vue-blotter#configuration-options')
+      }
+
       // Set text values according to props
       const text = this.setBlotterText({
         text: this.text,
